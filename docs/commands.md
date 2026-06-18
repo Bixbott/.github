@@ -254,6 +254,20 @@ Các kiểm tra có thể bao gồm:
 4. Dùng `bixbott review --staged` trước khi commit.
 5. Dùng `bixbott github pr summarize` để chuẩn bị mô tả pull request.
 
+
+## Luồng UI qua hệ sinh thái repo
+
+Các trang docs và command UI nên thể hiện rõ vai trò của từng repository trong trải nghiệm Bixbott:
+
+| Repo | Vai trò trong UI flow |
+| --- | --- |
+| `.github` | Cửa vào profile/docs: giới thiệu sản phẩm, liên kết command page và command reference |
+| `bixbott-cli` | Command center: nhận prompt, hiển thị plan, chạy review/fix/deploy |
+| `copilot-sdk` | Runtime/SDK: cung cấp lớp tích hợp agent workflow cho app và service |
+| `bixbott-server` | Server/API: xử lý workspace, webhook, GitHub workflow và tác vụ nền |
+
+Luồng đề xuất: người dùng bắt đầu ở profile/docs, chọn một command trong CLI, CLI gọi SDK/runtime để lập kế hoạch hoặc thực thi, sau đó server đồng bộ trạng thái với GitHub issue, pull request, commit và deployment.
+
 ## Gợi ý tách trang tiếp theo
 
 Sau trang tổng quan này, nên tách dần thành các trang:

@@ -234,6 +234,59 @@
       .card h3 { margin: 0 0 10px; font-size: 21px; }
       .card p { margin: 0; }
 
+      .repo-flow {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      .repo-card {
+        position: relative;
+        min-height: 220px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: linear-gradient(180deg, rgba(18, 44, 37, 0.92), rgba(7, 18, 15, 0.82));
+        padding: 20px;
+      }
+
+      .repo-card::after {
+        content: "→";
+        position: absolute;
+        top: 50%;
+        right: -15px;
+        width: 28px;
+        height: 28px;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #0b1a16;
+        color: var(--accent);
+        transform: translateY(-50%);
+        z-index: 2;
+      }
+
+      .repo-card:last-child::after { content: "✓"; }
+
+      .repo-kicker {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .repo-card h3 { margin: 10px 0 10px; }
+      .repo-card p { margin: 0 0 16px; }
+
+      .flow-note {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: rgba(0, 0, 0, 0.22);
+        padding: 18px;
+      }
+
       .form-panel {
         display: grid;
         grid-template-columns: 0.9fr 1.1fr;
@@ -290,7 +343,8 @@
 
       @media (max-width: 880px) {
         .hero, .form-panel { grid-template-columns: 1fr; }
-        .grid { grid-template-columns: 1fr; }
+        .grid, .repo-flow { grid-template-columns: 1fr; }
+        .repo-card::after { display: none; }
         .nav { align-items: flex-start; flex-direction: column; }
         .nav-links { flex-wrap: wrap; }
       }
@@ -304,6 +358,7 @@
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="#commands">Commands</a>
+        <a href="#repos">Repo Flow</a>
         <a href="#forms">Forms & Buttons</a>
         <a href="commands.md">Markdown docs</a>
         <a class="button button-secondary" href="#install">Get started</a>
@@ -356,6 +411,46 @@ $ bixbott build "Create a SaaS landing page" --plan-only
           <article class="card"><h3>Build</h3><p>Sinh ứng dụng hoặc tính năng từ mô tả tự nhiên với chế độ lập kế hoạch trước khi áp dụng.</p></article>
           <article class="card"><h3>Review</h3><p>Review staged files, working tree hoặc pull request để phát hiện lỗi trước khi merge.</p></article>
           <article class="card"><h3>Deploy</h3><p>Kiểm tra môi trường, provider và cấu hình cần thiết trước khi đưa ứng dụng lên production.</p></article>
+        </div>
+      </section>
+
+
+      <section class="shell section" id="repos">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">GITHUB_ECOSYSTEM</span>
+            <h2>Luồng UI qua toàn bộ repo Bixbott</h2>
+          </div>
+          <a class="button button-secondary" href="https://github.com/Bixbott" target="_blank" rel="noreferrer">View GitHub org</a>
+        </div>
+        <div class="repo-flow" aria-label="Bixbott repository UI flow">
+          <article class="repo-card">
+            <span class="repo-kicker">01 · Discover</span>
+            <h3>.github</h3>
+            <p>Trang profile và docs là cửa vào đầu tiên: giới thiệu sản phẩm, điều hướng tới command page và command reference.</p>
+            <a class="button button-secondary" href="https://github.com/Bixbott/.github" target="_blank" rel="noreferrer">Open repo</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-kicker">02 · Command</span>
+            <h3>bixbott-cli</h3>
+            <p>CLI nhận prompt, hiển thị plan, chạy review/fix/deploy và đóng vai trò command center cho người dùng.</p>
+            <a class="button button-secondary" href="https://github.com/Bixbott/bixbott-cli" target="_blank" rel="noreferrer">Open repo</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-kicker">03 · Runtime</span>
+            <h3>copilot-sdk</h3>
+            <p>SDK cung cấp lớp tích hợp agent/runtime để ứng dụng gọi workflow AI theo nhiều ngôn ngữ và môi trường.</p>
+            <a class="button button-secondary" href="https://github.com/Bixbott/copilot-sdk" target="_blank" rel="noreferrer">Open repo</a>
+          </article>
+          <article class="repo-card">
+            <span class="repo-kicker">04 · Service</span>
+            <h3>bixbott-server</h3>
+            <p>Server/API xử lý workspace, webhook, GitHub workflow và các tác vụ nền cho trải nghiệm Agent IDE.</p>
+            <a class="button button-secondary" href="https://github.com/Bixbott/bixbott-server" target="_blank" rel="noreferrer">Open repo</a>
+          </article>
+        </div>
+        <div class="flow-note">
+          <strong>UI flow đề xuất:</strong> Người dùng bắt đầu ở profile/docs, chọn command trong Bixbott CLI, CLI gọi SDK/runtime để lập kế hoạch và thực thi, sau đó server đồng bộ trạng thái với GitHub issue, pull request, commit và deployment.
         </div>
       </section>
 
