@@ -44,6 +44,11 @@ bixbott --help
 | `bixbott github` | Làm việc với GitHub repository, issue, PR và commit |
 | `bixbott config` | Quản lý cấu hình cục bộ/toàn cục |
 | `bixbott doctor` | Kiểm tra môi trường phát triển |
+| `bixbott tasks` | Quản lý tác vụ, tag và phân công |
+| `bixbott personnel` | Quản lý thành viên, agent và vai trò |
+| `bixbott integrations` | Quản lý trang tích hợp dịch vụ ngoài |
+| `bixbott skills` | Liệt kê, bật/tắt và cấu hình skill |
+| `bixbott api-keys` | Tạo, xoay vòng và ủy quyền API key |
 
 ## `bixbott init`
 
@@ -229,6 +234,91 @@ bixbott config <subcommand>
 bixbott config set defaultFramework next
 ```
 
+
+## `bixbott tasks`
+
+Quản lý tác vụ và nhiều tag cho từng tác vụ.
+
+```bash
+bixbott tasks <subcommand>
+```
+
+### Subcommands
+
+| Lệnh | Mục đích |
+| --- | --- |
+| `bixbott tasks list --tag docs --tag area:api` | Lọc tác vụ theo nhiều tag |
+| `bixbott tasks tag add <task-id> <tag>` | Thêm tag cho tác vụ |
+| `bixbott tasks assign <task-id> --to <user-or-agent>` | Phân công tác vụ cho người hoặc agent |
+
+## `bixbott personnel`
+
+Quản lý tab nhân sự gồm thành viên, nhóm, agent và vai trò trong workspace.
+
+```bash
+bixbott personnel <subcommand>
+```
+
+### Subcommands
+
+| Lệnh | Mục đích |
+| --- | --- |
+| `bixbott personnel list` | Liệt kê thành viên và agent |
+| `bixbott personnel invite <email> --role developer` | Mời thành viên mới |
+| `bixbott personnel role set <id> <role>` | Cập nhật vai trò |
+| `bixbott personnel agent enable <agent>` | Bật agent cho workspace |
+
+## `bixbott integrations`
+
+Quản lý các tích hợp như GitHub, deploy provider, observability và kênh thông báo.
+
+```bash
+bixbott integrations <subcommand>
+```
+
+### Subcommands
+
+| Lệnh | Mục đích |
+| --- | --- |
+| `bixbott integrations list` | Liệt kê tích hợp và trạng thái |
+| `bixbott integrations connect github` | Kết nối GitHub |
+| `bixbott integrations disconnect <name>` | Ngắt kết nối tích hợp |
+| `bixbott integrations doctor <name>` | Kiểm tra lỗi cấu hình tích hợp |
+
+## `bixbott skills`
+
+Liệt kê, bật/tắt và cấu hình skill cho agent hoặc workspace.
+
+```bash
+bixbott skills <subcommand>
+```
+
+### Subcommands
+
+| Lệnh | Mục đích |
+| --- | --- |
+| `bixbott skills list` | Liệt kê skill có sẵn |
+| `bixbott skills enable <name>` | Bật skill cho workspace |
+| `bixbott skills disable <name>` | Tắt skill |
+| `bixbott skills inspect <name>` | Xem metadata, quyền và tích hợp cần thiết |
+
+## `bixbott api-keys`
+
+Quản lý API key và ủy quyền khóa cho agent theo scope, skill và thời hạn.
+
+```bash
+bixbott api-keys <subcommand>
+```
+
+### Subcommands
+
+| Lệnh | Mục đích |
+| --- | --- |
+| `bixbott api-keys create <provider> --scope <scope>` | Tạo API key theo provider/scope |
+| `bixbott api-keys rotate <key-id>` | Xoay vòng API key |
+| `bixbott api-keys revoke <key-id>` | Thu hồi API key |
+| `bixbott api-keys delegate <key-id> --to <agent> --skill <skill>` | Ủy quyền key cho agent/skill |
+
 ## `bixbott doctor`
 
 Kiểm tra môi trường phát triển và phát hiện thiếu sót phổ biến.
@@ -267,3 +357,5 @@ Sau trang tổng quan này, nên tách dần thành các trang:
 - `docs/commands/github.md`
 - `docs/commands/config.md`
 - `docs/commands/doctor.md`
+- `docs/workspace-design.md`
+- `docs/integrations-skills-api-keys.md`
