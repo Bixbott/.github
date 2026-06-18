@@ -16,6 +16,9 @@ Nó kết hợp:
 - 🚀 Deployment Assistant
 - 📦 Project Scaffolding
 - 🔄 GitHub Integration
+- 🏷️ Multi-tag Task Management
+- 👥 Personnel & Agent Assignment
+- 🔐 API Key Delegation
 
 Mục tiêu của Bixbott là trở thành một môi trường phát triển hiện đại tương tự Cursor, Windsurf và OpenCode nhưng tập trung vào khả năng Agent tự động xây dựng ứng dụng.
 
@@ -57,6 +60,8 @@ Làm việc trực tiếp với:
 ## 📚 Tài liệu
 
 - [Bixbott Command Docs](../docs/commands.md)
+- [Workspace Design: Tag tác vụ và tab nhân sự](../docs/workspace-design.md)
+- [Tích hợp, Skill và ủy quyền API key](../docs/integrations-skills-api-keys.md)
 
 ---
 
