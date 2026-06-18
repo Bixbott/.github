@@ -54,6 +54,12 @@ Làm việc trực tiếp với:
 
 ---
 
+## 📚 Tài liệu
+
+- [Bixbott Command Docs](../docs/commands.md)
+
+---
+
 ## 🛠️ Cài đặt
 
 ```bash
